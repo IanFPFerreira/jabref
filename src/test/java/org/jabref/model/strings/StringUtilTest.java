@@ -345,6 +345,17 @@ class StringUtilTest {
     }
 
     @Test
+    void newTestUnquote(){
+        assertEquals("", StringUtil.unquote("", ' '));
+        assertEquals("ab:", StringUtil.unquote("ab::", ':'));
+        assertEquals("ab::", StringUtil.unquote("ab::", '_'));
+        assertEquals("aaa", StringUtil.unquote("aaaaaa", 'a'));
+        assertEquals("", StringUtil.unquote("a", 'a'));
+        assertEquals("::::::", StringUtil.unquote(":::a:::", 'a'));
+        assertEquals(":a:::a::", StringUtil.unquote("a:aa:a:a:aa:a:a", 'a'));
+    }
+
+    @Test
     void testCapitalizeFirst() {
         assertEquals("", StringUtil.capitalizeFirst(""));
         assertEquals("Hello world", StringUtil.capitalizeFirst("Hello World"));
